@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_09_05_141429) do
+ActiveRecord::Schema.define(version: 2024_09_05_172823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "events", force: :cascade do |t|
+    t.string "uid"
+    t.string "title"
+    t.text "description"
+    t.integer "event_type"
+    t.integer "status"
+    t.boolean "system", default: false
+    t.string "reminder_count"
+    t.string "url"
+    t.string "reminder_interval"
+    t.string "reminder_unit"
+    t.datetime "scheduled_at"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.datetime "deleted_at"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "uid"
@@ -29,4 +50,5 @@ ActiveRecord::Schema.define(version: 2024_09_05_141429) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "events", "users"
 end

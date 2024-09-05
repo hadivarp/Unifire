@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+
+  has_many :events, dependent: :destroy
+
   # Use Active Record validations instead of a before_create callback
   validates :password, confirmation: true
   validates :password_confirmation, presence: true

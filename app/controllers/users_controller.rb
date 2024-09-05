@@ -29,7 +29,7 @@ class UsersController < BaseController
     user = @users.find_by(uid: params[:uid])
 
     if user
-      user.update(deleted_at: Time.now)  # Use 'deleted_at' instead of 'delete_at'
+      user.update(deleted_at: Time.now)
       render json: { message: 'User deleted successfully' }, status: :ok
     else
       render json: { message: 'User not found' }, status: :not_found
