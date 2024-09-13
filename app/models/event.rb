@@ -5,6 +5,6 @@ class Event < ApplicationRecord
   has_many :attendees, through: :books, source: :attendee
 
   enum status: { active: 0, inactive: 1 }
-  enum event_type: { interview: 0, meeting: 1, call: 2 }
+  enum event_type: { default: 0, one_off: 1, meeting: 2 }
 
 end

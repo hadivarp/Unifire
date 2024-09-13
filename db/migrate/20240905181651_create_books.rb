@@ -2,6 +2,7 @@ class CreateBooks < ActiveRecord::Migration[6.1]
   def change
     create_table :books do |t|
       t.string :uid
+      t.integer :status
       t.datetime :scheduled_at
 
       t.references :event, null: false, foreign_key: true
